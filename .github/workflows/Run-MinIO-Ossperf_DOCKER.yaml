@@ -28,15 +28,7 @@ jobs:
         docker run -d --name minio -p 9000:9000 -e "MINIO_ROOT_USER=${MIN_USER}" -e "MINIO_ROOT_PASSWORD=${MIN_PASS}" minio/minio server /data
     - name: Wait for Minio Server to Start
       run: |
-        sleep 20  # Adjust the sleep time if needed
-    - name: Configure Minio Client
-      env:
-        MIN_URL: ${{ secrets.MINIO_URL }}
-        MIN_USER: ${{ secrets.MINIO_USER }}
-        MIN_PASS: ${{ secrets.MINIO_PASS }}
-      run: |
-        docker pull minio/mc
-        docker run --entrypoint /bin/sh --network host -e "MC_HOST_minio=http://${MIN_USER}:${MIN_PASS}@${MIN_URL}" minio/mc -c "mc alias set myminio ${MIN_URL} ${MIN_USER} ${MIN_PASS}"    
+        sleep 20  # Adjust the sleep time if needed   
     - name: Run ossperf.sh
       run: |
         cd $GITHUB_WORKSPACE 
