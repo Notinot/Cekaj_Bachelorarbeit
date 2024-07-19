@@ -29,14 +29,14 @@ jobs:
     - name: Wait for Minio Server to Start
       run: |
         sleep 20  # Adjust the sleep time if needed
-    - name: Configure Minio Client
-      env:
-        MIN_URL: ${{ secrets.MINIO_URL }}
-        MIN_USER: ${{ secrets.MINIO_USER }}
-        MIN_PASS: ${{ secrets.MINIO_PASS }}
-      run: |
-        docker pull minio/mc
-        docker run --entrypoint /bin/sh --network host -e "MC_HOST_minio=http://${MIN_USER}:${MIN_PASS}@${MIN_URL}" minio/mc -c "mc alias set myminio ${MIN_URL} ${MIN_USER} ${MIN_PASS}"    
+#    - name: Configure Minio Client
+#      env:
+#        MIN_URL: ${{ secrets.MINIO_URL }}
+#        MIN_USER: ${{ secrets.MINIO_USER }}
+#        MIN_PASS: ${{ secrets.MINIO_PASS }}
+#      run: |
+#        docker pull minio/mc
+#        docker run --entrypoint /bin/sh --network host -e "MC_HOST_minio=http://${MIN_USER}:${MIN_PASS}@${MIN_URL}" minio/mc -c "mc alias set myminio ${MIN_URL} ${MIN_USER} ${MIN_PASS}"    
     - name: Run ossperf.sh
       run: |
         cd $GITHUB_WORKSPACE 
