@@ -32,4 +32,4 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE 
         chmod +x ossperf.sh
-        ./ossperf.sh -n 5 -s 1048576 -b ossperf-testbucket -p -m minio
+        ./ossperf.sh -n 5 -s 1048576 -b ossperf-testbucket -p -m minio 
