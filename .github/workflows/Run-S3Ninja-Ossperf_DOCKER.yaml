@@ -5,8 +5,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  schedule:
-    - cron: '11 18 * * *'
+#  schedule:
+#    - cron: '11 18 * * *'
   workflow_dispatch:
 
 jobs:
